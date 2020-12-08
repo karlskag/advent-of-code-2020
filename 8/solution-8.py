@@ -1,16 +1,21 @@
+import copy
+
 with open('input8.txt') as f:
     content = f.readlines()
 input_list = [x.strip().split(' ') for x in content]
 
 # Part 1
 def solve_a(curr_i = 0, value = 0, visited = {}):
+    # Avoid mutating dict when called from solve_b
+    # I'm getting same result without copying, so probably not needed... 
+    _visited = copy.deepcopy(visited)
     while True:
         el = input_list[curr_i]
         cmd, delta = el[0], el[1]
-        if curr_i in visited:
+        if curr_i in _visited:
             return ('loop', value)
         
-        visited[curr_i] = True
+        _visited[curr_i] = True
         if cmd == 'nop':
             curr_i += 1
             if curr_i == len(input_list): return ('term', value)
