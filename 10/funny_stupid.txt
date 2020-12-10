@@ -1,0 +1,61 @@
+Funny to look back on, super brute force. Practically didn't work for large trees.
+Came up with final solution after reading about dynamic programming. 
+
+# def count_paths(nodes, index, length, graph):
+#     _self = nodes[index]
+#     if index in graph and 'win' in graph[index]: 
+#         return 1
+#     elif index == length - 1: 
+#         if index in graph: graph[index]['win'] = True
+#         else: graph[index] = { 'win': True } 
+#         return 1
+    
+#     n, n2, n3 = index + 1, index + 2, index + 3 
+    
+#     if index in graph:
+#         _sum = 0
+#         for node in graph[index]['connections']:
+#             _sum += count_paths(nodes, node, length, graph)
+#     else:         
+#         d1 = nodes[n] - _self
+#         d2, d3 = 4, 4
+#         if d1 < 4: graph[index] = { 'connections': [n] }  
+#         if n2 <= length - 1:
+#             d2 = nodes[n2] - _self
+#             if d2 < 4: graph[index]['connections'] = graph[index]['connections'] +[n2]
+#         if n3 <= length - 1:
+#             d3 = nodes[n3] - _self
+#             if d3 < 4: graph[index]['connections'] = graph[index]['connections'] + [n3]
+        
+#         _sum = 0
+#         for node in graph[index]['connections']:
+#             _sum += count_paths(nodes, node, length, graph)
+    
+#     return _sum
+
+# def count_paths(nodes, index, length, graph):
+#     _self = nodes[index]
+#     if index == length - 1 : return 1
+    
+#     n, n2, n3 = index + 1, index + 2, index + 3 
+    
+#     if index in graph:
+#         _sum = 0
+#         for node in graph[index]:
+#             _sum += count_paths(nodes, node, length, graph)
+#     else:         
+#         d1 = nodes[n] - _self
+#         d2, d3 = 4, 4
+#         if d1 < 4: graph[index] = [n]  
+#         if n2 <= length - 1:
+#             d2 = nodes[n2] - _self
+#             if d2 < 4: graph[index] = graph[index] +[n2]
+#         if n3 <= length - 1:
+#             d3 = nodes[n3] - _self
+#             if d3 < 4: graph[index] = graph[index] +[n3]
+        
+#         _sum = 0
+#         for node in graph[index]:
+#             _sum += count_paths(nodes, node, length, graph)
+    
+#     return _sum
