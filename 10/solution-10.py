@@ -1,4 +1,3 @@
-import itertools as it
 import time
 
 with open('input10.txt') as f:
@@ -23,10 +22,8 @@ def count_paths(nodes, index, length, graph):
     
     _self = nodes[index]
     n, n2, n3 = index + 1, index + 2, index + 3 
-    d1 = nodes[n] - _self
-    d2, d3 = 4, 4
     
-    if d1 < 4: 
+    if nodes[n] - _self < 4: 
         graph[index] = count_paths(nodes, n, length, graph)  
     if n2 <= length - 1 and nodes[n2] - _self < 4:
         graph[index] += count_paths(nodes, n2, length, graph)
@@ -44,4 +41,4 @@ print('Part 1: ', solve_a())
 start = time.time()
 print('Part 2:', solve_b())
 end = time.time()
-# print(end - start) ----------->  0.0001399517059326172       :)
+# print(end - start) ----------->  0.0001399517059326172
